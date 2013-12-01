@@ -16,7 +16,8 @@
 <script type="text/javascript" src="js/index.js"></script>
 <style type="text/css">
 #resultado-category-01,
-#resultado-category-02{
+#resultado-category-02,
+#carregando, #dark{
 	visibility:hidden;
 	display:none;	
 }
@@ -24,8 +25,12 @@
 </head>
 
 <body class="bg-pattern">
-<div class="container">
-<header>
+<div id="carregando">
+Carregando
+</div>
+<div id="dark">
+</div>
+<header class="container">
 <div class="col-md-7 col-md-offset-2 title text-center item">
 <h1><span class="logo-comparador" title="JusBrasil | Comparador LOA"alt="Logo JusBrasil | Comparador LOA">Comparador LOA</span></h1>
 <div class="text">Bem vindo ao <strong>Comparador LOA</strong>(<em>Lei Orçamentária Anual</em>), a mais nova ferramenta de comparação<br />
@@ -33,7 +38,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <a href="http://www.jusbrasil.com.br/topicos/322848/lei-orcamentaria-anual">Clique aqui para saber mais sobre o <strong>LOA</strong>.</a></div>
 </div>
 </header>
-<section class="text-center">
+<section class="container text-center">
 <!-- CONTAINER - PRIMEIRO ITEM -->
 <div class="col-md-7 col-md-offset-2 item">
 <h4>Selecione as areas que deseja comparar.</h4>
@@ -129,6 +134,5 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 </section>
 <footer>
 </footer>
-</div>
 </body>
 </html>
