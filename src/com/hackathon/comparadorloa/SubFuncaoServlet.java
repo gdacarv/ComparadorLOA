@@ -45,6 +45,7 @@ public class SubFuncaoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		PrintWriter out = resp.getWriter();
+		out.println("<option value=\"0\">Nenhuma subfunção</option>");
 		for(Subfuncao subfuncao : subfuncoes)
 			out.println("<option value=\""+subfuncao.id+"\">"+subfuncao.name+"</option>");
 	}

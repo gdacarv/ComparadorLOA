@@ -39,8 +39,6 @@ makeVisible("carregando");
 
 function comparar()
 {
-if(!verificarCampos())
-	return;
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -69,5 +67,9 @@ makeVisible("carregando");
 }
 
 function verificarCampos(){
+	if(document.getElementById("first-category-third").value > document.getElementById("second-category-third").value){
+		alert("Data inicial não pode ser maior que data final.");
+		return false;
+	}
 	return true;
 }

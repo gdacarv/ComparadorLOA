@@ -47,6 +47,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="row">
 <div class="col-md-8">
 <select class="form-control" name="category-primary" size="1" id="first-category-primary" onchange="loadSubfuncoes('first-category-second', this)">
+  <option value="0">Selecione função</option>
   <% List<Funcao> funcoes = (List<Funcao>) request.getAttribute("Funcoes");
   for(Funcao funcao : funcoes) {
     out.println("<option value=\""+funcao.id+"\">"+funcao.name+"</option>");
@@ -63,6 +64,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="row">
 <div class="col-md-8">
 <select class="form-control" name="category-secondory" size="1" id="first-category-second">
+	<option value="0">Nenhuma subfunção</option>
 </select>
 </div>
 <div class="col-md-4">
@@ -77,6 +79,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="title-topic text-center">Selecione a segunda área.</div>
 <div class="col-md-11 col-md-offset-1">
 <select class="form-control" name="category-primary" size="1" id="second-category-primary" onchange="loadSubfuncoes('second-category-second', this)">
+  <option value="0">Selecione função</option>
   <% 
   for(Funcao funcao : funcoes) {
     out.println("<option value=\""+funcao.id+"\">"+funcao.name+"</option>");
@@ -86,6 +89,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 </div>
 <div class="col-md-11 col-md-offset-1">
 <select class="form-control" name="category-primary" size="1" id="second-category-second">
+	<option value="0">Nenhuma subfunção</option>
 </select>
 </div>
 </div>
@@ -128,7 +132,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <!--BOTÃO - COMPARAR-->
 <a name="resultado"></a>
 <div class="col-md-7 col-md-offset-2">
-<button class="btn btn-success" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02');comparar()" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
+<button class="btn btn-success" onclick="if(verificarCampos()){makeVisible('resultado-category-01');makeVisible('resultado-category-02');comparar()}" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
 <button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button" title="Clique para limpar os resultados.">Limpar</button>
 </div>
 </section>
