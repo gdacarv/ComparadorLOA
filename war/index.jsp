@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ page import="java.util.List,com.hackathon.comparadorloa.FuncaoBean" %>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Comparador LOA</title>
 <link rel="stylesheet" type="text/css" href="grid/grid.css"/>
 
@@ -45,8 +46,12 @@ function makeClean(id) {
 Selecione a primeira area.
 <div>
 <select class="form-control" name="category-primary" size="1" id="category-primary">
-  <option>Administracao</option>
-  <option>Saude</option>
+  <% FuncaoBean funcaoBean = (FuncaoBean) request.getAttribute("FuncaoBean");
+  List<String> funcoes = funcaoBean.getFuncoes();
+  for(String funcao : funcoes) {
+    out.println("<option>"+funcao+"</option>");
+  }
+  %>
 </select>
 </div>
 <div>
@@ -67,8 +72,11 @@ Selecione a primeira area.
 Selecione a segunda area.
 <div>
 <select class="form-control" name="category-primary" size="1" id="category-primary">
-  <option>Administracao</option>
-  <option>Saude</option>
+  <% 
+  for(String funcao : funcoes) {
+    %><option><%= funcao %></option><%
+  }
+  %>
 </select>
 </div>
 <div>
@@ -85,7 +93,7 @@ Selecione a segunda area.
 </div>
 </div>
 </div>
-<!--RESULTADOS DA COMPARAÇÃO-->
+<!--RESULTADOS DA COMPARA����O-->
 <div class="col-md-7 col-md-offset-3">
 <div id="resultado-category-01" class="col-md-5 col-md-offset">
 Valor:
@@ -96,7 +104,7 @@ Valor:
 <input type="text" value="Resultado" class="text-danger"></input>
 </div>
 </div>
-<!--BOTÃO - COMPARAR-->
+<!--BOT��O - COMPARAR-->
 <div class="col-md-7 col-md-offset-3">
 <button class="btn btn-success" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02')" type="button">Comparar</button>
 <button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button">Limpar</button>

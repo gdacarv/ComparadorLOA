@@ -47,7 +47,10 @@ public class ComparadorLOAServlet extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		System.out.println(funcoes);
+		FuncaoBean funcao = new FuncaoBean();
+		funcao.setFuncoes(funcoes);
+		
+		request.setAttribute("FuncaoBean", funcao);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
