@@ -32,15 +32,17 @@ function makeClean(id) {
 
 <body class="bg-pattern">
 <div class="container">
-<header class="container">
-<div class="col-md-7 col-md-offset-3 title text-center">
-<h1>Comparador LOA</h1>
+<header>
+<div class="col-md-7 col-md-offset-3 title text-center item">
+<h1><span class="logo-comparador">Comparador LOA</span></h1>
 </div>
 </header>
-<section class="container text-center">
+<section class="text-center">
 <!-- CONTAINER - PRIMEIRO ITEM -->
-<div class="col-md-7 col-md-offset-3">
+<div class="col-md-7 col-md-offset-3 item">
+<div>Escolha as areas que deseja comparar.</div>
 <div class="col-md-5 col-md-offset">
+Selecione a primeira area.
 <div>
 <select class="form-control" name="category-primary" size="1" id="category-primary">
   <option>Administracao</option>
@@ -62,6 +64,7 @@ function makeClean(id) {
 </div>
 <!-- CONTAINER - SEGUNDO ITEM -->
 <div class="col-md-5 col-md-offset-2">
+Selecione a segunda area.
 <div>
 <select class="form-control" name="category-primary" size="1" id="category-primary">
   <option>Administracao</option>
@@ -95,8 +98,8 @@ Valor:
 </div>
 <!--BOTÃO - COMPARAR-->
 <div class="col-md-7 col-md-offset-3">
-<button class="btn btn-danger" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button">Limpar</button>
-<button class="btn btn-success col-md-offset-1" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02')" type="button">Comparar</button>
+<button class="btn btn-success" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02')" type="button">Comparar</button>
+<button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button">Limpar</button>
 </div>
 </section>
 <footer>
