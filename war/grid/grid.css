@@ -7,15 +7,15 @@ h4 {
   margin-top: 25px;
 }
 .row {
-  margin-bottom: 20px;
+  margin-bottom:0px;
 }
 .row .row {
   margin-top: 10px;
   margin-bottom: 0;
 }
 [class*="col-"] {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #fff;
   background-color: rgba(255,255,255,1);
 }
@@ -24,8 +24,26 @@ hr {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+.text{
+	color:#404040;
+	padding:30px 10px 0;
+}
 .item{
 	border-bottom:1px solid #CCC;
+}
+.title-topic{
+	font-weight:bold;
+	color:#404040;	
+	text-align:left;
+}
+.instructions{
+	height: 42px;
+	display: block;
+	line-height: 42px;
+	color: gray;
+	font-size: 0.8em;
+	text-align: center;
+	font-style: italic;
 }
 .logo-comparador{
 	background: url(../img/img-logo-comparador-loa.png);
