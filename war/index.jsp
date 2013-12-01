@@ -129,7 +129,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="col-md-5">
 <div class="title-topic text-center">Selecione a segunda área.</div>
 <div class="col-md-11 col-md-offset-1">
-<select class="form-control" name="category-primary" size="1" id="category-primary" onchange="loadSubfuncoes('second-category-second', this)">
+<select class="form-control" name="category-primary" size="1" id="second-category-primary" onchange="loadSubfuncoes('second-category-second', this)">
   <% 
   for(Funcao funcao : funcoes) {
     out.println("<option value=\""+funcao.id+"\">"+funcao.name+"</option>");
