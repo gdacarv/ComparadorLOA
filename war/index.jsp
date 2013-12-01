@@ -67,7 +67,7 @@ xmlhttp.onreadystatechange=function()
     
     }
   }
-xmlhttp.open("GET","comparar?Funcao1="+document.getElementById("first-category-primary").value+"&Subfuncao1="+document.getElementById("first-category-second").value+"&Funcao2="+document.getElementById("second-category-primary").value+"&Subfuncao2="+document.getElementById("second-category-second").value+"%inicio="+document.getElementById("first-category-third").value+"&fim="+document.getElementById("second-category-third").value,true);
+xmlhttp.open("GET","comparar?Funcao1="+document.getElementById("first-category-primary").value+"&Subfuncao1="+document.getElementById("first-category-second").value+"&Funcao2="+document.getElementById("second-category-primary").value+"&Subfuncao2="+document.getElementById("second-category-second").value+"&inicio="+document.getElementById("first-category-third").value+"&fim="+document.getElementById("second-category-third").value,true);
 xmlhttp.send();
 }
 </script>
