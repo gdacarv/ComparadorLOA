@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.NumberFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,7 @@ public class CompararServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		int index;
 		String funcao1 = req.getParameter("Funcao1");
 		URL url = new URL(String.format(COMPARAR_URL, funcao1, req.getParameter("Subfuncao1"), req.getParameter("Funcao2"), req.getParameter("Subfuncao2"), req.getParameter("inicio"), req.getParameter("fim")));
 		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -37,18 +39,25 @@ public class CompararServlet extends HttpServlet {
 			String[] valores = new String[2];
 			if(json.length() > 0){
 				JSONObject jsonObject = json.getJSONObject(0);
-				valores[funcao1.equals(jsonObject.getJSONObject("funcaoCodigo").getString("value")) ? 0 : 1] = jsonObject.getJSONObject("pago").getString("value");
+				index = funcao1.equals(jsonObject.getJSONObject("funcaoCodigo").getString("value")) ? 0 : 1;
+				valores[index] = jsonObject.getJSONObject("pago").getString("value");
 			}
 			if(json.length() > 1){
 				JSONObject jsonObject = json.getJSONObject(1);
-				valores[funcao1.equals(jsonObject.getJSONObject("funcaoCodigo").getString("value")) ? 0 : 1] = jsonObject.getJSONObject("pago").getString("value");
+				index = funcao1.equals(jsonObject.getJSONObject("funcaoCodigo").getString("value")) ? 0 : 1; 
+				valores[index] = jsonObject.getJSONObject("pago").getString("value");
 			}
-			out.print("R$ "+(valores[0] != null ? valores[0] : "0,00")+"|");
-			out.print("R$ "+(valores[1] != null ? valores[1] : "0,00"));
+			
+			out.print(converteMoeda((valores[0] != null ? valores[0] : "0"))+"|");
+			out.print(converteMoeda((valores[1] != null ? valores[1] : "0")));
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			out.print("R$ 0,00|R$ 0,00");
 		}
+	}
+
+	private String converteMoeda(String valor) {
+		return NumberFormat.getCurrencyInstance().format(Double.parseDouble(valor));
 	}
 }
