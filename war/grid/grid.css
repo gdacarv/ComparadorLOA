@@ -30,9 +30,9 @@ hr {
 }
 .item{
 	border-bottom:1px solid #CCC;
+	padding-bottom:20px;
 }
 .title-topic{
-	font-weight:bold;
 	color:#404040;	
 	text-align:left;
 }
@@ -44,6 +44,7 @@ hr {
 	font-size: 0.8em;
 	text-align: center;
 	font-style: italic;
+	cursor:help;
 }
 .logo-comparador{
 	background: url(../img/img-logo-comparador-loa.png);
