@@ -3,6 +3,7 @@
 <head>
 <%@ page import="java.util.List,com.hackathon.comparadorloa.Funcao" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <title>Comparador LOA</title>
 <link rel="stylesheet" type="text/css" href="grid/grid.css"/>
 
@@ -10,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css"/>
-
 <link rel="icon" type="image/x-icon" href="favicon.png" />
 
 <script type="text/javascript">
@@ -115,7 +115,7 @@ dos valores gastos entre as areas e sub areas do governo federal.</div>
 </div>
 <div class="row">
 <div class="col-md-12">
-<select class="form-control" name="category-primary" size="1" id="second-category-second">
+<select class="form-control" name="category-primary" size="1" id="second-category-primary">
 </select>
 </div>
 </div>
@@ -139,7 +139,8 @@ dos valores gastos entre as areas e sub areas do governo federal.</div>
 </select>
 </div>
 </div>
-<div class="col-md-7 col-md-offset-3">
+<!--RESULTADOS DA COMPARAÇÃO-->
+<div class="col-md-7 col-md-offset-2">
 <div id="resultado-category-01" class="col-md-5 col-md-offset">
 <div class="title-topic">Valor:</div>
 <input type="text" value="R$0" class="text-danger" disabled="disabled"></input>
@@ -149,9 +150,10 @@ dos valores gastos entre as areas e sub areas do governo federal.</div>
 <input type="text" value="R$0" class="text-danger" disabled="disabled"></input>
 </div>
 </div>
-<div class="col-md-7 col-md-offset-3">
-<button class="btn btn-success" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02')" type="button">Comparar</button>
-<button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button">Limpar</button>
+<!--BOTÃO - COMPARAR-->
+<div class="col-md-7 col-md-offset-2">
+<button class="btn btn-success" onclick="makeVisible('resultado-category-01');makeVisible('resultado-category-02')" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
+<button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button" title="Clique para limpar os resultados.">Limpar</button>
 </div>
 </section>
 <footer>
