@@ -6,12 +6,14 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>Comparador LOA</title>
 <link rel="stylesheet" type="text/css" href="grid/grid.css"/>
-
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css"/>
 <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
 
 <script type="text/javascript" src="js/index.js"></script>
 <style type="text/css">
