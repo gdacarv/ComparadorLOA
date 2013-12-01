@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>Comparador LOA</title>
 <link rel="stylesheet" type="text/css" href="grid/grid.css"/>
-
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
@@ -132,7 +131,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <!--BOTÃO - COMPARAR-->
 <a name="resultado"></a>
 <div class="col-md-7 col-md-offset-2">
-<button class="btn btn-success" onclick="if(verificarCampos()){makeVisible('resultado-category-01');makeVisible('resultado-category-02');comparar()}" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
+<button class="btn btn-success" onclick="if(verificarCampos()){comparar()}" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
 <button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02')" type="button" title="Clique para limpar os resultados.">Limpar</button>
 </div>
 </section>

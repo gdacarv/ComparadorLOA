@@ -5,6 +5,12 @@ function makeVisible(id) {
 	window.scrollTo(0,document.body.scrollHeight);
 }
 
+function makeVisibleWithoutScroll(id) {
+	var element = document.getElementById(id);
+	element.style.visibility = "visible";
+	element.style.display = "block";
+}
+
 function makeClean(id) {
 	var element = document.getElementById(id);
 	element.style.visibility = "hidden";
@@ -33,8 +39,8 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("GET","subfuncao?Funcao="+combobox.value,true);
 xmlhttp.send();
-makeVisible("dark");
-makeVisible("carregando");
+makeVisibleWithoutScroll("dark");
+makeVisibleWithoutScroll("carregando");
 }
 
 function comparar()
@@ -57,18 +63,23 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("valor2").value=resp[1];
     makeClean("dark");
     makeClean("carregando");
-    
+    makeVisible('resultado-category-01');
+    makeVisible('resultado-category-02');
     }
   }
 xmlhttp.open("GET","comparar?Funcao1="+document.getElementById("first-category-primary").value+"&Subfuncao1="+document.getElementById("first-category-second").value+"&Funcao2="+document.getElementById("second-category-primary").value+"&Subfuncao2="+document.getElementById("second-category-second").value+"&inicio="+document.getElementById("first-category-third").value+"&fim="+document.getElementById("second-category-third").value,true);
 xmlhttp.send();
-makeVisible("dark");
-makeVisible("carregando");
+makeVisibleWithoutScroll("dark");
+makeVisibleWithoutScroll("carregando");
 }
 
 function verificarCampos(){
 	if(document.getElementById("first-category-third").value > document.getElementById("second-category-third").value){
 		alert("Data inicial não pode ser maior que data final.");
+		return false;
+	}
+	if(document.getElementById("first-category-primary").value == 0 || document.getElementById("second-category-primary").value == 0){
+		alert("Selecione funções");
 		return false;
 	}
 	return true;
