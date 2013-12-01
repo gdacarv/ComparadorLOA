@@ -41,13 +41,13 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <section class="container text-center">
 <!-- CONTAINER - PRIMEIRO ITEM -->
 <div class="col-md-7 col-md-offset-2 item">
-<h4>Selecione as areas que deseja comparar.</h4>
+<h4>Selecione as áreas que deseja comparar.</h4>
 <div class="col-md-7">
 <div class="title-topic">Selecione a primeira área.</div>
 <div class="row">
 <div class="col-md-8">
 <select class="form-control" name="category-primary" size="1" id="first-category-primary" onchange="loadSubfuncoes('first-category-second', this)">
-  <option value="0">Selecione função</option>
+  <option value="0">Selecione área</option>
   <% List<Funcao> funcoes = (List<Funcao>) request.getAttribute("Funcoes");
   for(Funcao funcao : funcoes) {
     out.println("<option value=\""+funcao.id+"\">"+funcao.name+"</option>");
@@ -79,7 +79,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="title-topic text-center">Selecione a segunda área.</div>
 <div class="col-md-11 col-md-offset-1">
 <select class="form-control" name="category-primary" size="1" id="second-category-primary" onchange="loadSubfuncoes('second-category-second', this)">
-  <option value="0">Selecione função</option>
+  <option value="0">Selecione área</option>
   <% 
   for(Funcao funcao : funcoes) {
     out.println("<option value=\""+funcao.id+"\">"+funcao.name+"</option>");
@@ -100,6 +100,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="col-md-3 col-md-offset-3">
 <div class="title-topic">Janeiro de:</div>
 <select class="form-control" name="category-tertiary" size="1" id="first-category-third">
+  <option value="0">----</option>
   <% List<String> anos = (List<String>) request.getAttribute("Anos");
   for(String ano: anos)
   	out.println("<option>"+ano+"</option>");
@@ -109,6 +110,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="col-md-3">
 <div class="title-topic">Até Dezembro de:</div>
 <select class="form-control" name="category-tertiary" size="1" id="second-category-third">
+  <option value="0">----</option>
   <% 
   for(String ano: anos)
   	out.println("<option>"+ano+"</option>");
@@ -120,11 +122,11 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <div class="col-md-7 col-md-offset-2">
 <div class="row">
 <div id="resultado-category-01" class="col-md-5 col-md-offset-1">
-<div class="title-topic text-center"><strong>Gasto Total:</strong></div>
+<strong><div class="title-topic text-center" id="gasto-total1">Gasto Total:</div></strong>
 <input type="text" value="R$0" class="text-danger" disabled="disabled" id="valor1" maxlength="25"></input>
 </div>
 <div id="resultado-category-02" class="col-md-6">
-<div class="title-topic text-center"><strong>Gasto Total:</strong></div>
+<strong><div class="title-topic text-center" id="gasto-total2">Gasto Total:</div></strong>
 <input type="text" value="R$0" class="text-danger" disabled="disabled" id="valor2" maxlength="25"></input>
 </div>
 <div id="resultado-category-03" class="col-md-8 col-md-offset-2">
@@ -137,7 +139,7 @@ dos valores gastos entre as áreas e sub áreas do governo federal.<br />
 <a name="resultado"></a>
 <div class="col-md-7 col-md-offset-2">
 <button class="btn btn-success" onclick="if(verificarCampos()){comparar()}" type="button" title="Clique para comparar os valores gastos no orçamento federal.">Comparar</button>
-<button class="btn btn-danger col-md-offset-1" onclick="makeClean('resultado-category-01');makeClean('resultado-category-02');makeClean('resultado-category-03')" type="button" title="Clique para limpar os resultados.">Limpar</button>
+<button class="btn btn-danger col-md-offset-1" onclick="clearForm();" type="button" title="Clique para limpar os resultados.">Limpar</button>
 </div>
 </section>
 <footer>

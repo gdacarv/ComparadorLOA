@@ -29,6 +29,7 @@ public class ComparadorLOAServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
+		response.setContentType("text/html;charset=UTF-8");
 		URL url = new URL(FUNCAO_URL);
 		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 		conn.setRequestProperty("Accept-Charset", "iso-8859-1");

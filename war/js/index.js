@@ -61,6 +61,9 @@ xmlhttp.onreadystatechange=function()
     var resp = xmlhttp.responseText.split('|');
     document.getElementById("valor1").value=resp[0];
     document.getElementById("valor2").value=resp[1];
+    document.getElementById("valor3").value=resp[2];
+    document.getElementById("gasto-total1").innerHTML=resp[3];
+    document.getElementById("gasto-total2").innerHTML=resp[4];
     makeClean("dark");
     makeClean("carregando");
     makeVisible('resultado-category-01');
@@ -68,15 +71,23 @@ xmlhttp.onreadystatechange=function()
     makeVisible('resultado-category-03');
     }
   }
-xmlhttp.open("GET","comparar?Funcao1="+document.getElementById("first-category-primary").value+"&Subfuncao1="+document.getElementById("first-category-second").value+"&Funcao2="+document.getElementById("second-category-primary").value+"&Subfuncao2="+document.getElementById("second-category-second").value+"&inicio="+document.getElementById("first-category-third").value+"&fim="+document.getElementById("second-category-third").value,true);
+var domNode1 = document.getElementById("first-category-primary");
+var value1 = domNode1.selectedIndex;
+var selected_text1 = domNode1.options[value1].text;
+var domNode2 = document.getElementById("second-category-primary");
+var value2 = domNode2.selectedIndex;
+var selected_text2 = domNode2.options[value2].text;
+xmlhttp.open("GET","comparar?Funcao1="+domNode1.value+"&Subfuncao1="+document.getElementById("first-category-second").value+"&Funcao2="+domNode2.value+"&Subfuncao2="+document.getElementById("second-category-second").value+"&inicio="+document.getElementById("first-category-third").value+"&fim="+document.getElementById("second-category-third").value+"&Funcao1Nome="+selected_text1+"&Funcao2Nome="+selected_text2,true);
 xmlhttp.send();
 makeVisibleWithoutScroll("dark");
 makeVisibleWithoutScroll("carregando");
 }
 
 function verificarCampos(){
-	if(document.getElementById("first-category-third").value > document.getElementById("second-category-third").value){
-		alert("Data inicial não pode ser maior que data final.");
+	var inicio = document.getElementById("first-category-third").value;
+	var fim = document.getElementById("second-category-third").value;
+	if(inicio == 0 || fim == 0 || (inicio > fim)){
+		alert("Datas inválidas.");
 		return false;
 	}
 	if(document.getElementById("first-category-primary").value == 0 || document.getElementById("second-category-primary").value == 0){
@@ -84,4 +95,16 @@ function verificarCampos(){
 		return false;
 	}
 	return true;
+}
+
+function clearForm(){
+	makeClean('resultado-category-01');
+	makeClean('resultado-category-02');
+	makeClean('resultado-category-03');
+	document.getElementById("first-category-primary").value = 0;
+	document.getElementById("second-category-primary").value = 0;
+	document.getElementById("first-category-second").value = 0;
+	document.getElementById("second-category-second").value = 0;
+	document.getElementById("first-category-third").value = 0;
+	document.getElementById("second-category-third").value = 0;
 }

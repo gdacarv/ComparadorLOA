@@ -25,11 +25,13 @@ public class CompararServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setContentType("text/html;charset=UTF-8");
 		int index;
 		String funcao1 = req.getParameter("Funcao1");
+		String funcao2 = req.getParameter("Funcao2");
 		String subfuncao1 = req.getParameter("Subfuncao1");
 		String subfuncao2 = req.getParameter("Subfuncao2");
-		URL url = new URL(String.format(COMPARAR_URL, funcao1, subfuncao1.equals("0") || subfuncao1.isEmpty() ? "" : "+%26%26+%3FsubfuncaoCodigo+%3D+%22"+subfuncao1+"%22", req.getParameter("Funcao2"), subfuncao2.equals("0") || subfuncao2.isEmpty()  ? "" : "+%26%26+%3FsubfuncaoCodigo+%3D+%22"+subfuncao2+"%22", req.getParameter("inicio"), req.getParameter("fim")));
+		URL url = new URL(String.format(COMPARAR_URL, funcao1, subfuncao1.equals("0") || subfuncao1.isEmpty() ? "" : "+%26%26+%3FsubfuncaoCodigo+%3D+%22"+subfuncao1+"%22", funcao2, subfuncao2.equals("0") || subfuncao2.isEmpty()  ? "" : "+%26%26+%3FsubfuncaoCodigo+%3D+%22"+subfuncao2+"%22", req.getParameter("inicio"), req.getParameter("fim")));
 		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 		conn.setRequestProperty("Accept-Charset", "UTF-8");
 		conn.setConnectTimeout(60000);
@@ -51,17 +53,27 @@ public class CompararServlet extends HttpServlet {
 				valores[index] = jsonObject.getJSONObject("pago").getString("value");
 			}
 			
-			out.print(converteMoeda((valores[0] != null ? valores[0] : "0"))+"|");
-			out.print(converteMoeda((valores[1] != null ? valores[1] : "0")));
+			double valor1 = Double.parseDouble(valores[0] != null ? valores[0] : "0");
+			out.print(converteMoeda(valor1));
+			double valor2 = Double.parseDouble(valores[1] != null ? valores[1] : "0");
+			out.print("|"+converteMoeda(valor2));
+			double valor3 = Math.abs(valor1-valor2);
+			out.print("|"+converteMoeda(valor3));
+			out.print("|"+req.getParameter("Funcao1Nome")+":");
+			out.print("|"+req.getParameter("Funcao2Nome")+":");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
-			out.print("R$ 0,00|R$ 0,00");
+			out.print("R$ 0,00|R$ 0,00|R$ 0,00|Gasto total:|Gasto total:");
 		}
 	}
 
 	private String converteMoeda(String valor) {
-		return "R"+NumberFormat.getCurrencyInstance(Locale.US).format(Double.parseDouble(valor)).replace(',', '*').replace('.', ',').replace('*', '.'); 
+		return converteMoeda(Double.parseDouble(valor)); 
+	}
+
+	private String converteMoeda(double valor) {
+		return "R"+NumberFormat.getCurrencyInstance(Locale.US).format(valor).replace(',', '*').replace('.', ',').replace('*', '.'); 
 		//gambiarra feita porque locale BR sai BRL e queremos R$...
 	}
 }
