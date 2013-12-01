@@ -94,6 +94,10 @@ function verificarCampos(){
 		alert("Selecione funções");
 		return false;
 	}
+	if(document.getElementById("first-category-primary").value == document.getElementById("second-category-primary").value && document.getElementById("first-category-second").value == document.getElementById("second-category-second").value){
+		alert("Selecione funções diferentes");
+		return false;
+	}
 	return true;
 }
 
