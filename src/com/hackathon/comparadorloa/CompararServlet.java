@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.text.NumberFormat;
 
 import javax.servlet.ServletException;
@@ -58,6 +59,7 @@ public class CompararServlet extends HttpServlet {
 	}
 
 	private String converteMoeda(String valor) {
-		return NumberFormat.getCurrencyInstance().format(Double.parseDouble(valor));
+		return "R"+NumberFormat.getCurrencyInstance(Locale.US).format(Double.parseDouble(valor)).replace(',', '*').replace('.', ',').replace('*', '.'); 
+		//gambiarra feita porque locale BR sai BRL e queremos R$...
 	}
 }
