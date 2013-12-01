@@ -12,6 +12,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ComparadorLOA</servlet-name>
 		<url-pattern>/comparadorloa</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Subfuncao</servlet-name>
+		<servlet-class>com.hackathon.comparadorloa.SubFuncaoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Subfuncao</servlet-name>
+		<url-pattern>/subfuncao</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>comparadorloa</welcome-file>
 	</welcome-file-list>
