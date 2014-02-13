@@ -47,7 +47,8 @@ hr {
 	cursor:help;
 }
 .logo-comparador{
-	background: url(../img/img-logo-comparador-loa.png);
+	background: url(../img/img-logo-comparador-loa2.png);
+	background-repeat:no-repeat;
 	text-indent: -999999px;
 	width: 200px;
 	height: 75px;

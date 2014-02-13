@@ -3,7 +3,6 @@ package com.hackathon.comparadorloa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -26,6 +25,7 @@ public class CompararServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.addHeader("Access-Control-Allow-Origin", "*");
 		resp.setContentType("text/html;charset=UTF-8");
 		int index;
 		String funcao1 = req.getParameter("Funcao1");

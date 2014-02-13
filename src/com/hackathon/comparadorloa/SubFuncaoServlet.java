@@ -23,6 +23,7 @@ public class SubFuncaoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.addHeader("Access-Control-Allow-Origin", "*");
 		resp.setContentType("text/html;charset=UTF-8");
 		String funcao = req.getParameter("Funcao").replace(' ', '+');
 		URL url = new URL(String.format(SUBFUNCAO_URL, funcao));
